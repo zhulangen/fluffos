@@ -130,7 +130,7 @@ array_t *allocate_array2(int n, svalue_t *svp)
     for (i = 0; i < n; i++) {
       svalue_t *r;
 
-      push_number(i);
+      push_number(i);//这里让sp++，是为了保存下边函数返回值用的，函数返回时sp--
       r = call_function_pointer(svp->u.fp, 1);
       ret->item[i] = *r;
       r->type = T_NUMBER;
